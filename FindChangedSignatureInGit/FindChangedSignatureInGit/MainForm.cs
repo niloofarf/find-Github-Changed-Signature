@@ -63,7 +63,12 @@ namespace FindChangedSignatureInGit
 
                 executeGitCommand(mycommand);
                 processStatusLbl.Text = "All commits have been found.";
-                
+
+
+                //check if commits.txt writting is finished;
+                continueIfFileGetUnlocked("commits.txt");
+                System.Threading.Thread.Sleep(3000);
+
                 #endregion
 
 
@@ -81,16 +86,18 @@ namespace FindChangedSignatureInGit
 
                     }
                     processStatusLbl.Text = "All files have been found.";
-                    
+
 
                 }
                 catch (Exception ex)
                 {
-                   
+
                     Console.WriteLine(ex.Message);
                     // instructionLbl.Text = ex.Message + "2222";
                 }
 
+                continueIfFileGetUnlocked("files.txt");//check if files.txt writting is finished
+                System.Threading.Thread.Sleep(2000);
                 #endregion
 
 
@@ -111,6 +118,7 @@ namespace FindChangedSignatureInGit
                         mycommand = "git -C \"" + repoAddress + "\"   diff " + line + "~ " + line + " >> eachCommitResult.txt";
                         executeGitCommand(mycommand);
 
+                        continueIfFileGetUnlocked("eachCommitResult.txt");
                         System.Threading.Thread.Sleep(2000);
 
                         foreach (string line2 in File.ReadLines(@"eachCommitResult.txt", Encoding.UTF8))
@@ -158,7 +166,7 @@ namespace FindChangedSignatureInGit
                 }
                 catch (Exception ex)
                 {
-                   
+
                     Console.WriteLine(ex.Message);
                     instructionLbl.Text = ex.Message + "111";
                 }
@@ -245,12 +253,41 @@ namespace FindChangedSignatureInGit
 
             }
             catch (Exception ex)
-            {                
+            {
                 Console.WriteLine(ex.Message);
                 //instructionLbl.Text = ex.Message + "2222";
             }
         }
 
-
+        public bool IsFileLocked(string filename)
+        {
+            bool Locked = false;
+            try
+            {
+                FileStream fs =
+                    File.Open(filename, FileMode.OpenOrCreate,
+                    FileAccess.ReadWrite, FileShare.None);
+                fs.Close();
+            }
+            catch (IOException ex)
+            {
+                Locked = true;
+            }
+            return Locked;
         }
+
+        public void continueIfFileGetUnlocked(string fileName)
+        {
+            while (true)
+            {
+                if (!IsFileLocked(fileName))
+                {
+                    break;
+                }
+            }
+        }
+
+
+
+    }
 }
