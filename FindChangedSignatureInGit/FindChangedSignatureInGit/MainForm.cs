@@ -17,8 +17,8 @@ namespace FindChangedSignatureInGit
 {
     public partial class MainForm : Form
     {
-        private int gridRowCounter = 0;
         private bool isExceptionOccured = false;
+        private int gridRowCounter = 0;
 
         public MainForm()
         {
@@ -27,8 +27,8 @@ namespace FindChangedSignatureInGit
 
         private void gitCkeckBtn_Click(object sender, EventArgs e)
         {
-
             string repoAddress = "";
+            string mycommand = "";
             int commitCounter = 0;
             int fileCounter = 0;
             List<string> plusList = new List<string>();
@@ -38,13 +38,14 @@ namespace FindChangedSignatureInGit
             Regex javaFunctionsRegex2 = new Regex(@"^-[ \t]*[a-zA-Z]*[ \t]*[a-zA-Z]+[ \t]+[a-zA-Z_][a-zA_Z0-9_]+[ \t]*\([a-zA-Z0-9_, ]*\)[a-zA-Z0-9_ \t]*{?}?$");
 
 
-
             FolderBrowserDialog directorySelectionDialog = new FolderBrowserDialog();
             directorySelectionDialog.Description = "Please select the directory address of your repository:";
 
             if (directorySelectionDialog.ShowDialog() == DialogResult.OK)
             {
-
+                isExceptionOccured = false;
+                gridRowCounter = 0;
+                resultPnl.Visible = false;
                 string sSelectedPath = directorySelectionDialog.SelectedPath;
                 repoAddrTxt.Text = sSelectedPath;
                 repoAddress = sSelectedPath;
@@ -60,17 +61,18 @@ namespace FindChangedSignatureInGit
                 #region AllcommitFinder
 
                 //string mycommand = "git -C \"D:\\Git repo\\testGity\" log --pretty=%H > commits.txt";
-                string mycommand = "git -C \"" + repoAddress + "\" log --pretty=%H > commits.txt";
+                mycommand = "git -C \"" + repoAddress + "\" log --pretty=%H > commits.txt";
 
                 executeGitCommand(mycommand);
                 processStatusLbl.Text = "All commits have been found.";
-
+                Application.DoEvents();
 
                 //check if commits.txt writting is finished;
                 continueIfFileGetUnlocked("commits.txt");
                 System.Threading.Thread.Sleep(3000);
 
                 #endregion
+
 
 
                 //Finding all changed files for all commits and writting them in a file (files.txt)
@@ -87,20 +89,21 @@ namespace FindChangedSignatureInGit
 
                     }
                     processStatusLbl.Text = "All files have been found.";
-
+                    Application.DoEvents();
 
                 }
                 catch (Exception ex)
                 {
-
-                    Console.WriteLine(ex.Message);
                     isExceptionOccured = true;
+                    Console.WriteLine(ex.Message);
                     // instructionLbl.Text = ex.Message + "2222";
                 }
 
                 continueIfFileGetUnlocked("files.txt");//check if files.txt writting is finished
                 System.Threading.Thread.Sleep(2000);
+
                 #endregion
+
 
 
                 //find all modified functions' signatures
@@ -122,6 +125,7 @@ namespace FindChangedSignatureInGit
 
                         continueIfFileGetUnlocked("eachCommitResult.txt");
                         System.Threading.Thread.Sleep(2000);
+
 
                         foreach (string line2 in File.ReadLines(@"eachCommitResult.txt", Encoding.UTF8))
                         {
@@ -168,14 +172,12 @@ namespace FindChangedSignatureInGit
                 }
                 catch (Exception ex)
                 {
-
-                    Console.WriteLine(ex.Message);
                     isExceptionOccured = true;
-                    //structionLbl.Text = ex.Message + "111";
+                    Console.WriteLine(ex.Message);
+                    instructionLbl.Text = ex.Message + "111";
                 }
 
                 #endregion
-
 
                 //Show the final status of the process Error or Success
                 #region finalStatus
@@ -197,11 +199,9 @@ namespace FindChangedSignatureInGit
 
                 #endregion
 
-
-            }
+            }// if user select a repository
 
         }
-
 
         public void OpenCSVevent(Object sender, EventArgs e)
         {
@@ -220,10 +220,25 @@ namespace FindChangedSignatureInGit
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                isExceptionOccured = true;
             }
         }
 
+        public bool IsFileLocked(string filename)
+        {
+            bool Locked = false;
+            try
+            {
+                FileStream fs =
+                    File.Open(filename, FileMode.OpenOrCreate,
+                    FileAccess.ReadWrite, FileShare.None);
+                fs.Close();
+            }
+            catch (IOException ex)
+            {
+                Locked = true;
+            }
+            return Locked;
+        }
 
         public void executeGitCommand(string mycommand)
         {
@@ -241,14 +256,22 @@ namespace FindChangedSignatureInGit
             }
             catch (Exception ex)
             {
-
-                Console.WriteLine(ex.Message);
                 isExceptionOccured = true;
-
+                Console.WriteLine(ex.Message);
+                //instructionLbl.Text = ex.Message + "2222";
             }
         }
 
-
+        public void continueIfFileGetUnlocked(string fileName)
+        {
+            while (true)
+            {
+                if (!IsFileLocked(fileName))
+                {
+                    break;
+                }
+            }
+        }
 
         public void reportPreviousHunkResults(List<string> myPlusList, List<string> myMinusList, string MyLine, string myFileName)
         {
@@ -294,39 +317,12 @@ namespace FindChangedSignatureInGit
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 isExceptionOccured = true;
+                Console.WriteLine(ex.Message);
                 //instructionLbl.Text = ex.Message + "2222";
             }
         }
 
-        public bool IsFileLocked(string filename)
-        {
-            bool Locked = false;
-            try
-            {
-                FileStream fs =
-                    File.Open(filename, FileMode.OpenOrCreate,
-                    FileAccess.ReadWrite, FileShare.None);
-                fs.Close();
-            }
-            catch (IOException ex)
-            {
-                Locked = true;
-            }
-            return Locked;
-        }
-
-        public void continueIfFileGetUnlocked(string fileName)
-        {
-            while (true)
-            {
-                if (!IsFileLocked(fileName))
-                {
-                    break;
-                }
-            }
-        }
 
 
 
