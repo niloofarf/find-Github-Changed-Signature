@@ -1,0 +1,6 @@
+4cfb36a865eaf2e54505f6d6022a0ef99ee4a770,extra/nosql/mongo/src/main/java/org/javaee7/extra/nosql/mongo/PersonSessionBean.java,public Person(),public Person(Long id; String name)
+4cfb36a865eaf2e54505f6d6022a0ef99ee4a770,jaxrs/resource-validation/src/main/java/org/javaee7/jaxrs/resource/validation/NameResource1.java,public Name(),public Name(String firstName; String lastName; String email)
+9692eb7477f5527770700cffd706b2ae51825eaa,extra/nosql/mongo/src/main/java/org/javaee7/extra/nosql/mongo/PersonSessionBean.java,public Person(),public Person(Long id; String name)
+9692eb7477f5527770700cffd706b2ae51825eaa,jaxrs/resource-validation/src/main/java/org/javaee7/jaxrs/resource/validation/NameResource1.java,public Name(),public Name(String firstName; String lastName; String email)
+69c240cd0e0da8c3f65f294b423de72c3e38613b,extra/nosql/mongo/src/main/java/org/javaee7/extra/nosql/mongo/PersonSessionBean.java,public Person(),public Person(Long id; String name)
+69c240cd0e0da8c3f65f294b423de72c3e38613b,jaxrs/resource-validation/src/main/java/org/javaee7/jaxrs/resource/validation/NameResource1.java,public Name(),public Name(String firstName; String lastName; String email)
