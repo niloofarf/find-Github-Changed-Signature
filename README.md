@@ -1,4 +1,4 @@
-# Detecting Changes in Function Signatures of a given Github Repository
+# Detecting Changes in Function Signatures of given Github Repositories
 
 This project is an assignment for the University of Alberta. The purpose of the program is to mine Github repositories
 and find all changed function signatures during the repository's project completion. 
