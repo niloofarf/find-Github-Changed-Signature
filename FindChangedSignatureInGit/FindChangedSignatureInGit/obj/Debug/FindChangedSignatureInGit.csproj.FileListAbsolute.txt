@@ -1,0 +1,9 @@
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.MainForm.resources
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.Properties.Resources.resources
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.csproj.GenerateResource.Cache
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.csproj.CoreCompileInputs.cache
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\bin\Debug\FindChangedSignatureInGit.exe.config
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\bin\Debug\FindChangedSignatureInGit.exe
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\bin\Debug\FindChangedSignatureInGit.pdb
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.exe
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.pdb
