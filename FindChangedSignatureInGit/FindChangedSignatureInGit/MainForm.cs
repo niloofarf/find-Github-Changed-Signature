@@ -18,6 +18,7 @@ namespace FindChangedSignatureInGit
     public partial class MainForm : Form
     {
         private int gridRowCounter = 0;
+        private bool isExceptionOccured = false;
 
         public MainForm()
         {
@@ -93,6 +94,7 @@ namespace FindChangedSignatureInGit
                 {
 
                     Console.WriteLine(ex.Message);
+                    isExceptionOccured = true;
                     // instructionLbl.Text = ex.Message + "2222";
                 }
 
@@ -168,19 +170,32 @@ namespace FindChangedSignatureInGit
                 {
 
                     Console.WriteLine(ex.Message);
-                    instructionLbl.Text = ex.Message + "111";
+                    isExceptionOccured = true;
+                    //structionLbl.Text = ex.Message + "111";
                 }
 
                 #endregion
 
 
+                //Show the final status of the process Error or Success
+                #region finalStatus
+
                 this.gitCkeckBtn.Enabled = true;
-
-                messageLbl.Text = "The process is finished!";
-                messageLbl.ForeColor = Color.Green;
-
+                if (isExceptionOccured)
+                {
+                    messageLbl.Text = "The process is finished with Exception!";
+                    messageLbl.ForeColor = Color.Red;
+                }
+                else
+                {
+                    messageLbl.Text = "The process is finished!";
+                    messageLbl.ForeColor = Color.Green;
+                }
+                System.Threading.Thread.Sleep(2000);
                 resultPnl.Visible = true;
                 openResultBtn.Click += new EventHandler(this.OpenCSVevent);
+
+                #endregion
 
 
             }
@@ -205,6 +220,7 @@ namespace FindChangedSignatureInGit
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                isExceptionOccured = true;
             }
         }
 
@@ -227,6 +243,7 @@ namespace FindChangedSignatureInGit
             {
 
                 Console.WriteLine(ex.Message);
+                isExceptionOccured = true;
 
             }
         }
@@ -278,6 +295,7 @@ namespace FindChangedSignatureInGit
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                isExceptionOccured = true;
                 //instructionLbl.Text = ex.Message + "2222";
             }
         }
