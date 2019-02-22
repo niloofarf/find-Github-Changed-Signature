@@ -52,9 +52,36 @@ namespace FindChangedSignatureInGit
 
                 executeGitCommand(mycommand);
                 processStatusLbl.Text = "All commits have been found.";
-
-
+                
                 #endregion
+
+
+                //Finding all changed files for all commits and writting them in a file (files.txt)
+                #region AllFileFinder
+
+                try
+                {
+                    System.IO.File.WriteAllText(@"files.txt", ""); // create an empty file
+                    foreach (string line in File.ReadLines(@"commits.txt", Encoding.UTF8))
+                    {
+                        //string mycommand = "git -C \"D:\\Git repo\\testGity\" diff-tree --no-commit-id --name-only -r " + line + " >> files.txt";
+                        mycommand = "git -C \"" + repoAddress + "\" diff-tree --no-commit-id --name-only -r " + line + " >> files.txt";
+                        executeGitCommand(mycommand);
+
+                    }
+                    processStatusLbl.Text = "All files have been found.";
+                    
+
+                }
+                catch (Exception ex)
+                {
+                   
+                    Console.WriteLine(ex.Message);
+                    // instructionLbl.Text = ex.Message + "2222";
+                }
+               
+                #endregion
+
 
                 this.gitCkeckBtn.Enabled = true;
 
