@@ -1,2 +1,1 @@
-70d334ad0feaa3d4bb55ddd29fe5c53c7ce5f147,new module.txt	,public void checkprog(),public void checkprog(string f1; int f2)
-7e06d358b6019e5d4f5828f9bad6a9a2d99547ef,test.txt,string function(a;b;c),string function(a;b;c;d)
+8b8542e103960d51c1d92c967c7264c73e2c0e4e,Primes.java,private Node(int val),private Node(int val; Node next)

@@ -1,4 +1,13 @@
-new module.txt
-niloo.txt
-test.txt
-test.txt
+Java 8 Streams/JavaStreams.java
+Java 8 Streams/bands.txt
+Java 8 Streams/data.txt
+Factorial.java
+LICENSE
+LinkedList.java
+Primes.java
+QuickSort.java
+README.md
+Temperature.java
+Tree.java
+bst.java
+LinkedList.java

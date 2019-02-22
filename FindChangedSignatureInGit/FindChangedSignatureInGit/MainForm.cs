@@ -22,6 +22,8 @@ namespace FindChangedSignatureInGit
         public MainForm()
         {
             InitializeComponent();
+            messageLbl.Visible = false;
+            processStatusLbl.Visible = false;
         }
 
         private void gitCkeckBtn_Click(object sender, EventArgs e)
@@ -50,8 +52,12 @@ namespace FindChangedSignatureInGit
                 repoAddress = sSelectedPath;
                 repoAddress.Replace("\\", "\\\\");
                 this.gitCkeckBtn.Enabled = false;
+
+                messageLbl.Visible = true;
+                processStatusLbl.Visible = true;
                 messageLbl.Text = "Processing ...";
                 messageLbl.ForeColor = Color.Black;
+
 
                 resultGrid.Rows.Clear();
                 Application.DoEvents();
