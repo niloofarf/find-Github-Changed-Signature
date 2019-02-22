@@ -33,8 +33,9 @@ namespace FindChangedSignatureInGit
             List<string> plusList = new List<string>();
             List<string> minusList = new List<string>();
             string fileName = "";
-            Regex javaFunctionsRegex = new Regex(@"^\+[ \t]*[a-zA-Z]*[ \t]*[a-zA-Z_][a-zA_Z0-9_]+[ \t]*\([a-zA-Z0-9_, ]*\)$");
-            Regex javaFunctionsRegex2 = new Regex(@"^-[ \t]*[a-zA-Z]*[ \t]*[a-zA-Z_][a-zA_Z0-9_]+[ \t]*\([a-zA-Z0-9_, ]*\)$");
+            Regex javaFunctionsRegex = new Regex(@"^\+[ \t]*[a-zA-Z]*[ \t]*[a-zA-Z]+[ \t]+[a-zA-Z_][a-zA_Z0-9_]+[ \t]*\([a-zA-Z0-9_, ]*\)[a-zA-Z0-9_ \t]*{?}?$");
+            Regex javaFunctionsRegex2 = new Regex(@"^-[ \t]*[a-zA-Z]*[ \t]*[a-zA-Z]+[ \t]+[a-zA-Z_][a-zA_Z0-9_]+[ \t]*\([a-zA-Z0-9_, ]*\)[a-zA-Z0-9_ \t]*{?}?$");
+
 
 
             FolderBrowserDialog directorySelectionDialog = new FolderBrowserDialog();

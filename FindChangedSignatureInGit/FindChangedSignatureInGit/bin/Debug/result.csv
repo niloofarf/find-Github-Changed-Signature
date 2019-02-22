@@ -1,2 +1,2 @@
+70d334ad0feaa3d4bb55ddd29fe5c53c7ce5f147,new module.txt	,public void checkprog(),public void checkprog(string f1; int f2)
 7e06d358b6019e5d4f5828f9bad6a9a2d99547ef,test.txt,string function(a;b;c),string function(a;b;c;d)
-ad97262820bc6d8cc77120968cf560ef1cbfc7c7,test.txt,function(a;b),function(a;b;c)
