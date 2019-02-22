@@ -10,7 +10,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.ComponentModel;
 using System.Collections;
 
 namespace FindChangedSignatureInGit
@@ -174,7 +173,7 @@ namespace FindChangedSignatureInGit
                 {
                     isExceptionOccured = true;
                     Console.WriteLine(ex.Message);
-                    instructionLbl.Text = ex.Message + "111";
+                    //structionLbl.Text = ex.Message + "111";
                 }
 
                 #endregion
@@ -219,6 +218,7 @@ namespace FindChangedSignatureInGit
             }
             catch (Exception ex)
             {
+                isExceptionOccured = true;
                 Console.WriteLine(ex.Message);
             }
         }
