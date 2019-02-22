@@ -58,6 +58,7 @@
             this.gitCkeckBtn.TabIndex = 8;
             this.gitCkeckBtn.Text = "git Checker";
             this.gitCkeckBtn.UseVisualStyleBackColor = true;
+            this.gitCkeckBtn.Click += new System.EventHandler(this.gitCkeckBtn_Click);
             // 
             // repoAddrTxt
             // 

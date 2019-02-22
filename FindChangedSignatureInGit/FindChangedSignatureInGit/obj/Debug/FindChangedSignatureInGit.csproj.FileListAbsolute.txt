@@ -7,3 +7,4 @@ D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedS
 D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\bin\Debug\FindChangedSignatureInGit.pdb
 D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.exe
 D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.pdb
+D:\Git repo\find Github Changed Signature\FindChangedSignatureInGit\FindChangedSignatureInGit\obj\Debug\FindChangedSignatureInGit.csprojResolveAssemblyReference.cache
