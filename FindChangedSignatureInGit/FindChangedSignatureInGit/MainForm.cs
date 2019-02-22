@@ -179,11 +179,34 @@ namespace FindChangedSignatureInGit
                 messageLbl.Text = "The process is finished!";
                 messageLbl.ForeColor = Color.Green;
 
+                resultPnl.Visible = true;
+                openResultBtn.Click += new EventHandler(this.OpenCSVevent);
+
 
             }
 
         }
 
+
+        public void OpenCSVevent(Object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists("result.csv"))
+                {
+                    System.Diagnostics.Process.Start("result.csv");
+                }
+                else
+                {
+                    MessageBox.Show("There is a problem, the file cannot be found!");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
 
         public void executeGitCommand(string mycommand)

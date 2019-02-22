@@ -38,7 +38,11 @@
             this.fileGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.beforeGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.afterGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultPnl = new System.Windows.Forms.Panel();
+            this.finalFileLbl = new System.Windows.Forms.Label();
+            this.openResultBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).BeginInit();
+            this.resultPnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // instructionLbl
@@ -132,11 +136,42 @@
             this.afterGridColumn.Name = "afterGridColumn";
             this.afterGridColumn.ReadOnly = true;
             // 
+            // resultPnl
+            // 
+            this.resultPnl.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.resultPnl.Controls.Add(this.finalFileLbl);
+            this.resultPnl.Controls.Add(this.openResultBtn);
+            this.resultPnl.Location = new System.Drawing.Point(602, 12);
+            this.resultPnl.Name = "resultPnl";
+            this.resultPnl.Padding = new System.Windows.Forms.Padding(10);
+            this.resultPnl.Size = new System.Drawing.Size(266, 136);
+            this.resultPnl.TabIndex = 14;
+            this.resultPnl.Visible = false;
+            // 
+            // finalFileLbl
+            // 
+            this.finalFileLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalFileLbl.Location = new System.Drawing.Point(26, 29);
+            this.finalFileLbl.Name = "finalFileLbl";
+            this.finalFileLbl.Size = new System.Drawing.Size(220, 34);
+            this.finalFileLbl.TabIndex = 8;
+            this.finalFileLbl.Text = "The final result is in result.csv file. click on the button below to open it:";
+            // 
+            // openResultBtn
+            // 
+            this.openResultBtn.Location = new System.Drawing.Point(49, 74);
+            this.openResultBtn.Name = "openResultBtn";
+            this.openResultBtn.Size = new System.Drawing.Size(175, 23);
+            this.openResultBtn.TabIndex = 9;
+            this.openResultBtn.Text = "Open result.csv";
+            this.openResultBtn.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 438);
+            this.Controls.Add(this.resultPnl);
             this.Controls.Add(this.resultGrid);
             this.Controls.Add(this.instructionLbl);
             this.Controls.Add(this.gitCkeckBtn);
@@ -146,6 +181,7 @@
             this.Name = "MainForm";
             this.Text = "Find Changed Function\'s Signature in Github";
             ((System.ComponentModel.ISupportInitialize)(this.resultGrid)).EndInit();
+            this.resultPnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +199,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fileGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn beforeGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn afterGridColumn;
+        private System.Windows.Forms.Panel resultPnl;
+        private System.Windows.Forms.Label finalFileLbl;
+        private System.Windows.Forms.Button openResultBtn;
     }
 }
