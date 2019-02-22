@@ -24,15 +24,19 @@ namespace FindChangedSignatureInGit
 
         private void gitCkeckBtn_Click(object sender, EventArgs e)
         {
+
+            string repoAddress = "";
+
             FolderBrowserDialog directorySelectionDialog = new FolderBrowserDialog();
             directorySelectionDialog.Description = "Please select the directory address of your repository:";
 
             if (directorySelectionDialog.ShowDialog() == DialogResult.OK)
             {
-                
+
                 string sSelectedPath = directorySelectionDialog.SelectedPath;
                 repoAddrTxt.Text = sSelectedPath;
-                
+                repoAddress = sSelectedPath;
+                repoAddress.Replace("\\", "\\\\");
                 this.gitCkeckBtn.Enabled = false;
                 messageLbl.Text = "Processing ...";
                 messageLbl.ForeColor = Color.Black;
@@ -43,17 +47,21 @@ namespace FindChangedSignatureInGit
                 //Finding all commits and writting them in a file (commits.txt)
                 #region AllcommitFinder
 
-                string mycommand = "git -C \"D:\\Git repo\\testGity\" log --pretty=%H > commits.txt";
-                
+                //string mycommand = "git -C \"D:\\Git repo\\testGity\" log --pretty=%H > commits.txt";
+                string mycommand = "git -C \"" + repoAddress + "\" log --pretty=%H > commits.txt";
 
                 executeGitCommand(mycommand);
                 processStatusLbl.Text = "All commits have been found.";
-                Application.DoEvents();
 
-               
-                
 
                 #endregion
+
+                this.gitCkeckBtn.Enabled = true;
+
+                messageLbl.Text = "The process is finished!";
+                messageLbl.ForeColor = Color.Green;
+
+
             }
 
         }
@@ -76,9 +84,9 @@ namespace FindChangedSignatureInGit
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine(ex.Message);
-                
+
             }
         }
 
