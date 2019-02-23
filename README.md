@@ -92,4 +92,4 @@ Niloofar Fathi
 
 ## Acknowledgments
 
-Prof. Sara Nadi
+Prof. Sarah Nadi
